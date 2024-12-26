@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h2>To-Do List</h2>
+    <form method="POST">
+        <input type="text" name="task" placeholder="Task" required>
+        <input type="text" name="reminder" placeholder="Reminder (YYYY-MM-DD HH:MM)" required>
+        <button type="submit">Add Task</button>
+    </form>
+    <ul>
+        {% for task, reminder in tasks %}
+            <li>{{ task }} (Reminder: {{ reminder }})</li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('logout') }}">Logout</a>
+</body>
+</html>
